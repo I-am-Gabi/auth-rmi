@@ -4,12 +4,11 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class Auth extends UnicastRemoteObject implements AuthInterface {
-	
-
+@SuppressWarnings("serial")
+public class AuthService extends UnicastRemoteObject implements AuthServiceInterface {
 	ArrayList<String> authn;
 	
-	protected Auth() throws RemoteException {
+	protected AuthService() throws RemoteException {
 		authn = new ArrayList<String>();
 		authn.add("Gabriela");
 		authn.add("Juliana");
