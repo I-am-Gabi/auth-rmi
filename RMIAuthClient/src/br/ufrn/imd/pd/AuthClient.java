@@ -5,9 +5,9 @@ import java.rmi.Naming;
 public class AuthClient {
 
 	public static void main(String[] args) {
-		AuthInterface auth;
+		AuthServiceInterface auth;
 		try {
-			auth = (AuthInterface)Naming.lookup("rmi://localhost/auth");
+			auth = (AuthServiceInterface)Naming.lookup("rmi://localhost/auth");
 			String msg = auth.hello("Gabriela");
 			System.out.println(msg);
 			msg = auth.hello("Juliana");

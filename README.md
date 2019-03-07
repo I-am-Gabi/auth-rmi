@@ -49,7 +49,7 @@ $ javac -d bin src/br/ufrn/imd/pd/*.java
 
 3. E execute:
 ```
-$ java -cp bin/ br.ufrn.imd.pd.AuthServer
+$ java -cp bin/ br.ufrn.imd.pd.AuthClient
 ```
 
 
