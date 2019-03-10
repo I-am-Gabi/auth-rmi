@@ -15,7 +15,7 @@ public class AuthClient {
 			msg = auth.hello("Carla");
 			System.out.println(msg);
 		} catch (Exception e) {
-				System.out.println("AuthClient exception: " + e);
+			System.out.println("AuthClient exception: " + e);
 		}
 	}
 }

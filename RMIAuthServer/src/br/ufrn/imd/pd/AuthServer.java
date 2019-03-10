@@ -5,7 +5,7 @@ import java.rmi.Naming;
 public class AuthServer {
 	public static void main(String[] args) {
 		try {
-			AuthService auth = new AuthService();
+			AuthService auth = new AuthService(); 
 			Naming.rebind("rmi://localhost/auth", auth);
 			System.out.println("Auth Server is ready.");
 			

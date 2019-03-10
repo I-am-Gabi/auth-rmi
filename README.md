@@ -25,7 +25,7 @@ $ javac -d bin src/br/ufrn/imd/pd/*.java
 2. Para gerar o arquivo *stub*
 ```
 $ cd bin/
-$ rmic br.ufrn.imd.pd.Auth
+$ rmic br.ufrn.imd.pd.AuthService
 ```
 
 3. Inicie o Java RMI registry

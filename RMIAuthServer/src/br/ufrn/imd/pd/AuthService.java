@@ -1,24 +1,59 @@
 package br.ufrn.imd.pd;
 
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
+import java.rmi.server.UnicastRemoteObject; 
+import java.util.List;
+
+import br.ufrn.imd.pd.DB.User; 
 
 @SuppressWarnings("serial")
 public class AuthService extends UnicastRemoteObject implements AuthServiceInterface {
-	ArrayList<String> authn;
-	
-	protected AuthService() throws RemoteException {
-		authn = new ArrayList<String>();
-		authn.add("Gabriela");
-		authn.add("Juliana");
+	DB database;
+	User user;
+
+	protected AuthService() throws RemoteException { 
+		this.database = new DB(); 
 	} 
 
 	@Override
-	public String hello(String name) throws RemoteException {
-		if (authn.contains(name)) 
-			return "Bem vinda, " + name;
-		else
-			return "Você não é bem vinda";
+	public boolean register(String username, String password, List<String> permission) throws RemoteException { 
+		this.database.insert(username, password, permission);
+		return true;
 	}
+
+	@Override
+	public boolean login(String username, String password) throws RemoteException {
+		if (database.validate(username, password)) {
+			user = database.getUser(username);
+			return true;
+		}
+	
+		return false;
+	}
+
+	@Override
+	public String read(String username) throws RemoteException {
+		if (user.getPermission().contains("read")) {
+			return this.database.getUser(username).getPermission().toString();
+		}
+		return "-";
+	}
+
+	@Override
+	public boolean update(String username, String password, List<String> permission) throws RemoteException {
+		if (user.getPermission().contains("update")) {
+			return this.database.update(username, password, permission);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean delete(String username) throws RemoteException {
+		if (user.getPermission().contains("delete")) {
+			return this.database.delete(username);
+		}
+		return false;
+	}
+	
+	
 }
