@@ -7,11 +7,14 @@ Projeto RMI que implementa um servidor de autenticação e autorização que
     - Se ele tem autorização para usar um objeto e qual tipo de autorização ele tem (ler, ler/escrever, sem autorização)
 
 **TODO**:
-- [ ] Decidir qual será o objeto protegido pelo servidor e acessado pelo cliente
-- [ ] Decidir quais serão as permissões 
-- [ ] Implementar sign up 
-- [ ] Implementar login
-- [ ] Implementar controle de acesso
+- [x] Decidir qual será o objeto protegido pelo servidor e acessado pelo cliente
+- [x] Decidir quais serão as permissões 
+- [ ] cliente - Implementar sign up
+- [x] servidor - Implementar sign up 
+- [ ] cliente - Implementar login 
+- [x] servidor - Implementar login
+- [ ] cliente - Implementar solicitação de acesso
+- [x] servidor - Implementar controle de acesso
 
 ### Run
 
