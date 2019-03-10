@@ -1,10 +1,11 @@
 package br.ufrn.imd.pd;
 
-import java.rmi.RemoteException;
+import java.rmi.RemoteException; 
 import java.rmi.server.UnicastRemoteObject; 
 import java.util.List;
 
-import br.ufrn.imd.pd.DB.User; 
+import br.ufrn.imd.pd.User; 
+import br.ufrn.imd.pd.DB; 
 
 @SuppressWarnings("serial")
 public class AuthService extends UnicastRemoteObject implements AuthServiceInterface {
@@ -53,7 +54,5 @@ public class AuthService extends UnicastRemoteObject implements AuthServiceInter
 			return this.database.delete(username);
 		}
 		return false;
-	}
-	
-	
+	} 
 }

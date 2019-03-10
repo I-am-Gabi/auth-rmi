@@ -1,12 +1,16 @@
 package br.ufrn.imd.pd;
-
-import java.rmi.Naming; 
+  
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry; 
 
 public class AuthServer {
 	public static void main(String[] args) {
-		try {
-			AuthService auth = new AuthService(); 
-			Naming.rebind("rmi://localhost/auth", auth);
+		try { 
+			String serviceName = "authservice";
+			AuthServiceInterface stub = new AuthService();
+			Registry registry = LocateRegistry.createRegistry(1099);
+			registry.rebind(serviceName, stub);
+			
 			System.out.println("Auth Server is ready.");
 			
 		} catch (Exception e) {
