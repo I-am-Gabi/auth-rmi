@@ -1,20 +1,31 @@
-package br.ufrn.imd.pd;
-  
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry; 
+package br.ufrn.imd.pd; 
 
-public class AuthServer {
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger; 
+
+ 
+public class AuthServer extends AuthService {
+	private static final Logger logger = LogManager.getLogger(AuthServer.class);
+	 
+	protected AuthServer() throws RemoteException {}
+
 	public static void main(String[] args) {
 		try { 
-			String serviceName = "authservice";
-			AuthServiceInterface stub = new AuthService();
-			Registry registry = LocateRegistry.createRegistry(1099);
+			String serviceName = "AuthService"; 
+			
+			// Bind the remote object's stub in the registry
+			AuthServiceInterface stub = (AuthServiceInterface) UnicastRemoteObject.exportObject(new AuthService(), 0); 
+			Registry registry = LocateRegistry.createRegistry(1098);
 			registry.rebind(serviceName, stub);
 			
-			System.out.println("Auth Server is ready.");
-			
+			logger.info("Auth Server is ready."); 
 		} catch (Exception e) {
-			System.out.println("Addition Server failed: " + e);
+			logger.error("Auth Server failed: " + e); 
 		} 
 	}
 }

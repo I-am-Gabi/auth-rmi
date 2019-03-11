@@ -11,10 +11,9 @@ public class DB {
 		this.database = new HashMap<String, User>();
 	}
 	
-	public boolean insert(String username, String password, List<String> permission) {
-		if (contains(username)) return false;
-		
-		this.database.put(username, new User(password, permission));
+	public boolean insert(String username, String password, List<String> permission) { 
+		if (contains(username)) return false; 
+		this.database.put(username, new User(password, permission)); 
 		return true;
 	}
 	
@@ -32,8 +31,9 @@ public class DB {
 		return true;
 	}
 	
-	public boolean contains(String username) {
-		return this.database.containsKey(username);
+	public boolean contains(String username) { 
+		boolean result = this.database.containsKey(username); 
+		return result;
 	}
 	
 	public boolean validate(String username, String password) {
