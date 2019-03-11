@@ -3,15 +3,9 @@ package br.ufrn.imd.pd;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger; 
-
+import java.rmi.server.UnicastRemoteObject; 
  
-public class AuthServer extends AuthService {
-	private static final Logger logger = LogManager.getLogger(AuthServer.class);
-	 
+public class AuthServer extends AuthService { 
 	protected AuthServer() throws RemoteException {}
 
 	public static void main(String[] args) {
@@ -23,9 +17,9 @@ public class AuthServer extends AuthService {
 			Registry registry = LocateRegistry.createRegistry(1098);
 			registry.rebind(serviceName, stub);
 			
-			logger.info("Auth Server is ready."); 
+			System.out.println("Auth Server is ready."); 
 		} catch (Exception e) {
-			logger.error("Auth Server failed: " + e); 
+			System.out.println("Auth Server failed: " + e); 
 		} 
 	}
 }
