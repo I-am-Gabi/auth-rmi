@@ -20,5 +20,10 @@ class User {
 	public List<String> getPermission() {
 		return permissions;
 	}
+	
+	@Override
+	public String toString() {
+        return this.password + ":" + this.permissions.toString();
+    } 
 }
 

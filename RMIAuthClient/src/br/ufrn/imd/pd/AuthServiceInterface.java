@@ -10,6 +10,8 @@ public interface AuthServiceInterface extends Remote {
 	
 	public boolean login(String username, String password) throws RemoteException;
 	
+	public boolean deslogar(String username, String password) throws RemoteException;
+	
 	public String read(String username) throws RemoteException;
 	
 	public boolean update(String username, String password, List<String> permission) throws RemoteException;
